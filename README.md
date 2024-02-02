@@ -1,31 +1,8 @@
-# PyNest service
+# New Mexico Water Data Initiative Integration API
 
-This is a template for a PyNest service.
+This project is a FastAPI application that returns NMWDI standardized data from various water data sources
 
-## Start Service
 
-## Step 1 - Create environment
-
-- install requirements:
-
-```bash
-pip install -r requirements.txt
-```
-
-## Step 2 - start service local
-
-1. Run service with main method
-
-```bash
-python main.py
-```
-
-2. Run service using uvicorn
-
-```bash
-uvicorn "app:app" --host "0.0.0.0" --port "8000" --reload
-```
-
-## Step 3 - Send requests
-
-Go to the fastapi docs and use your api endpoints - http://127.0.0.1/docs
+## Sources
+- [USGS Water Data for the Nation](https://waterdata.usgs.gov/nwis)
+- [New Mexico Bureau of Geology-Water Data API](https://waterdata.nmt.edu/)
