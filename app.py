@@ -13,15 +13,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ===============================================================================
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.inmemory import InMemoryBackend
+
 from starlette.middleware.cors import CORSMiddleware
 
 from settings import settings
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Initialize the cache
+    FastAPICache.init(InMemoryBackend(), prefix="fastapi-cache")
+    yield
+
 
 app = FastAPI(
     title="New Mexico Water Data Initiative Integration API",
     description="API provides integrated data from the New Mexico Water Data Initiative",
     version="0.1.0",
+    lifespan=lifespan,
 )
 
 app.add_middleware(

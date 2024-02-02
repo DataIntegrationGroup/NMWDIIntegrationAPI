@@ -16,6 +16,7 @@
 from typing import List
 
 from fastapi import APIRouter
+from fastapi_cache.decorator import cache
 
 from routers import usgs_util
 from schemas.waterlevel import NMWDIWaterLevel
@@ -29,8 +30,8 @@ router = APIRouter(
 @router.get(
     "/gw/locations",
 )
-# @cache(expire=3600)
-async def get_locations(limit: int = 100):
+@cache(expire=3600)
+async def get_locations(limit: int = None):
     locations = await usgs_util.get_site_metadata(parameterCode="72019")
 
     def make_feature(loc):
@@ -56,7 +57,9 @@ async def get_locations(limit: int = 100):
         l
         for l in locations
         if "dec_long_va" in l and "dec_lat_va" in l and "alt_va" in l
-    ][:limit]
+    ]
+    if limit:
+        locations = locations[:limit]
     return {
         "type": "FeatureCollection",
         "features": [make_feature(loc) for loc in locations],
