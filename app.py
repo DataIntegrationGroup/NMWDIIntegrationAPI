@@ -23,6 +23,7 @@ from starlette.middleware.cors import CORSMiddleware
 
 from settings import settings
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Initialize the cache
