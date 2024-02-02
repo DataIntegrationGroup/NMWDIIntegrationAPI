@@ -25,4 +25,5 @@ class NMWDIWaterLevel(BaseModel):
     date_measured: Union[date, datetime]
     time_measured: Union[time, None] = None
 
+
 # ============= EOF =============================================

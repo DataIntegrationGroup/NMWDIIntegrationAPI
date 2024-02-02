@@ -53,10 +53,10 @@ async def get_locations(limit: int = 100):
         return feature
 
     locations = [
-                    l
-                    for l in locations
-                    if "dec_long_va" in l and "dec_lat_va" in l and "alt_va" in l
-                ][:limit]
+        l
+        for l in locations
+        if "dec_long_va" in l and "dec_lat_va" in l and "alt_va" in l
+    ][:limit]
     return {
         "type": "FeatureCollection",
         "features": [make_feature(loc) for loc in locations],
@@ -79,5 +79,6 @@ async def get_latest_gw_data(sites: List[str]):
     records = usgs_util.get_latest_gw_data(sites)
     records = [transform_latest(record) for record in records]
     return [r for r in records if r is not None]
+
 
 # ============= EOF =============================================
