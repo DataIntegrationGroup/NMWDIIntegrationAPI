@@ -4,6 +4,7 @@
 locallauncher.sh
 test.db
 deploy.sh
+app.yaml
 
 .idea
 # User-specific stuff
