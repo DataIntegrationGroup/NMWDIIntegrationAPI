@@ -1,7 +1,0 @@
-service: apim
-runtime: python39
-
-entrypoint: gunicorn -w 1 -k uvicorn.workers.UvicornWorker main:app
-
-env_variables:
-  IS_LOCAL: 0

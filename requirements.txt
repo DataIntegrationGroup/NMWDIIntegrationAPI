@@ -2,4 +2,5 @@ fastapi
 uvicorn
 httpx
 gunicorn
-fastapi-cache2
+fastapi-cache2[redis]
+redis

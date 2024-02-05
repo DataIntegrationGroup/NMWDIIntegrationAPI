@@ -30,7 +30,7 @@ router = APIRouter(
 @router.get(
     "/gw/locations",
 )
-@cache(expire=3600)
+# @cache(expire=3600)
 async def get_locations(limit: int = None):
     locations = await usgs_util.get_site_metadata(parameterCode="72019")
 

@@ -32,6 +32,8 @@ class Settings:
         self.IS_LOCAL = os.getenv("IS_LOCAL", True)
         self.SECRET_KEY = os.getenv("SECRET_KEY")
 
+        self.REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+        self.REDIS_PORT = os.getenv("REDIS_PORT", 6379)
 
 settings = Settings()
 
