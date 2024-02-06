@@ -86,9 +86,7 @@ def _make_json_records(js, url, tag):
     return records
 
 
-def get_site_metadata(
-    siteid=None, parameterCode=None, siteType="GW", stateCd="NM"
-):
+def get_site_metadata(siteid=None, parameterCode=None, siteType="GW", stateCd="NM"):
     """
     get site metadata from USGS
     :param location:
