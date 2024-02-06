@@ -86,7 +86,7 @@ def _make_json_records(js, url, tag):
     return records
 
 
-async def get_site_metadata(
+def get_site_metadata(
     siteid=None, parameterCode=None, siteType="GW", stateCd="NM"
 ):
     """
@@ -103,8 +103,8 @@ async def get_site_metadata(
     if parameterCode is not None:
         url = f"{url}&parameterCd={parameterCode}"
 
-    async with httpx.AsyncClient() as client:
-        r = await client.get(url)
+    with httpx.Client() as client:
+        r = client.get(url)
         if r.status_code == 200:
             records = make_records(r.text, url)
             return records[0] if siteid else records

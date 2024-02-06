@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ===============================================================================
+import json
+import time
 from typing import List
 
 from fastapi import APIRouter
@@ -30,9 +32,9 @@ router = APIRouter(
 @router.get(
     "/gw/locations",
 )
-# @cache(expire=3600)
+@cache(expire=3600)
 async def get_locations(limit: int = None):
-    locations = await usgs_util.get_site_metadata(parameterCode="72019")
+    locations = usgs_util.get_site_metadata(parameterCode="72019")
 
     def make_feature(loc):
         loc["name"] = loc["site_no"]
